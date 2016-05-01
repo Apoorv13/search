@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>
+Cars | Filter
+</title>
+<link rel="stylesheet" type="text/css" href="home.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+  var jobCount = $('#list .in').length;
+  $('.list-count').text(jobCount + ' items');
+    
+  
+  $("#search-text").keyup(function () {
+     //$(this).addClass('hidden');
+  
+    var searchTerm = $("#search-text").val();
+    var listItem = $('#list').children('li');
+  
+    
+    var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+    
+      //extends :contains to be case insensitive
+  $.extend($.expr[':'], {
+  'containsi': function(elem, i, match, array)
+  {
+    return (elem.textContent || elem.innerText || '').toLowerCase()
+    .indexOf((match[3] || "").toLowerCase()) >= 0;
+  }
+});
+    
+    
+    $("#list li").not(":containsi('" + searchSplit + "')").each(function(e)   {
+      $(this).addClass('hiding out').removeClass('in');
+      setTimeout(function() {
+          $('.out').addClass('hidden');
+        }, 300);
+    });
+    
+    $("#list li:containsi('" + searchSplit + "')").each(function(e) {
+      $(this).removeClass('hidden out').addClass('in');
+      setTimeout(function() {
+          $('.in').removeClass('hiding');
+        }, 1);
+    });
+    
+  
+      var jobCount = $('#list .in').length;
+    $('.list-count').text(jobCount + ' items');
+    
+    //shows empty state text when no jobs found
+    if(jobCount == '0') {
+      $('#list').addClass('empty');
+    }
+    else {
+      $('#list').removeClass('empty');
+    }
+    
+  });
+
+  
+                  
+     /*  
+     An extra! This function implements
+     jQuery autocomplete in the searchbox.
+     Uncomment to use :)
+     
+     
+ function searchList() {                
+    //array of list items
+    var listArray = [];
+  
+     $("#list li").each(function() {
+    var listText = $(this).text().trim();
+      listArray.push(listText);
+    });
+    
+    $('#search-text').autocomplete({
+        source: listArray
+    });
+    
+    
+  }
+                                   
+  searchList();
+*/
+  
+                    
+});
+</script>
+</head>
+<body>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans|Maven+Pro:500' rel='stylesheet' type='text/css'>
+<div class="deco topdeco">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  </div>
+  
+  <h1>Car's</h1>
+  <h3>
+  a quick search</h3>
+
+ <section class="list-wrap">
+
+   <label for="search-text">Search the list</label>
+  <input type="text" id="search-text" placeholder="Enter Make" class="search-box">
+    <span class="list-count"></span>
+    
+    
+<ul id="list">
+  <li class="in" value=".2012">Maruti Swift - 2012
+  <img src="swift.jpg"></li>
+  <li class="in" value=".2012">Ford Figo Aspire - 2012
+  <img src="aspire.jpg"></li>
+  <li class="in" value=".2015">Volkswagen Polo - 2015
+  <img src="polo.jpg"></li>
+  <li class="in" value=".2011">Maruti dZire - 2011
+  <img src="dzire.jpg"></li>
+  <li class="in" value=".2012">Honda City - 2012
+  <img src="city.jpg"></li>
+  <li class="in" value=".2014">Honda Accord - 2014
+  <img src="accord.jpg"></li>
+  <li class="in" value=".2016">Maruti Baleno - 2016
+  <img src="baleni.jpg"></li> 
+  <li class="in" value=".2012">Honda Brio - 2012
+  <img src="brio.jpg"></li>
+  <li class="in" value=".2012">Nissan Micra - 2012
+  <img src="micra.jpg"></li>
+  <li class="in" value=".2011">Honda Brio - 2011
+  <img src="micra.jpg"></li>
+  <li class="in" value=".2012">Nissan Micra - 2012
+  <img src="micra.jpg"></li>
+  <li class="in" value=".2010">Maruti Swift - 2010
+  <img src="swiftn.jpg"></li> 
+    <li class="in" value=".2010">Maruti Swift - 2010
+  <img src="swift.jpg"></li>
+  <li class="in" value=".2013">Ford Figo Aspire - 2013
+  <img src="aspire.jpg"></li> 
+  <li class="in" value=".2012">Volkswagen Polo - 2012
+  <img src="polo.jpg"></li>
+  <li class="in" value=".2011">Maruti dZire - 2011
+  <img src="dzire.jpg"></li>
+  <li class="in" value=".2013">Honda City - 2013
+  <img src="city.jpg"></li>
+  <li class="in" value=".2012">Honda Accord - 2012
+  <img src="accord.jpg"></li>
+  <li class="in" value=".2011">Maruti Baleno - 2011
+  <img src="baleni.jpg"></li>
+  <li class="in" value=".2011">Honda Brio - 2011
+  <img src="brio.jpg"></li>
+  <li class="in" value=".2010">Nissan Micra - 2010
+  <img src="micra.jpg"></li>
+  <li class="in" value=".2015">Honda Brio - 2015
+  <img src="brio.jpg"></li>
+  <li class="in" value=".2015">Nissan Micra - 2015
+  <img src="micra.jpg"></li> 
+  <li class="in" value=".2015">Maruti Swift - 2015
+  <img src="swiftn.jpg"></li>
+  <span class="empty-item">no results</span>
+</ul>
+   </section>
+   
+     <p class="cta">
+    Experiment by <br /> <a id="link" href="#">Apoorv Dayal</a>
+    <br>
+    Technologies used: HTML5, CSS, JQuery
+</p>
+</body>
+</html>
